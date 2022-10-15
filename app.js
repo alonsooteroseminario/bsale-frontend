@@ -7,7 +7,7 @@ const templateCarrito = document.getElementById('template-carrito').content
 const fragment = document.createDocumentFragment()
 let carrito = {}
 
-let url = "/client/index.html";
+let url = process.env.FRONTEND_URL;
 document.getElementById('inicio').setAttribute('href', url);
 
 // Eventos
@@ -25,27 +25,27 @@ items.addEventListener('click', e => { btnAumentarDisminuir(e) })
 
 // Traer productos
 const fetchDataProducts = async () => {
-    const res = await fetch('http://localhost:3000/api/productos');
+    const res = await fetch(`/${process.env.BACKEND_URL}/api/productos`);
     const data = await res.json()
     pintarCards(data)
 }
 // Traer productos por nombre
 const fetchDataProductsByName = async (name) => {
-    const res = await fetch(`http://localhost:3000/api/productos?name=${name}`);
+    const res = await fetch(`/${process.env.BACKEND_URL}/api/productos?name=${name}`);
     const data = await res.json()
     pintarCards(data)
 }
 
 // Traer productos por categoria
 const fetchDataProductsByCategory = async (category) => {
-    const res = await fetch(`http://localhost:3000/api/productos/${category}`);
+    const res = await fetch(`/${process.env.BACKEND_URL}/api/productos/${category}`);
     const data = await res.json()
     pintarCards(data)
 }
 
 // Traer Id de catergorias por nombre
 const fetchCategoryIdByName = async (category) => {
-    const res = await fetch(`http://localhost:3000/api/categorias/${category}`);
+    const res = await fetch(`/${process.env.BACKEND_URL}/api/categorias/${category}`);
     const data = await res.json()
     return data.id;
 }
@@ -53,7 +53,7 @@ const fetchCategoryIdByName = async (category) => {
 let arrayCategories = [];
 // Traer categorias
 const fetchDataCategories = async () => {
-    const res = await fetch('http://localhost:3000/api/categorias');
+    const res = await fetch(`/${process.env.BACKEND_URL}/api/categorias`);
     const data = await res.json()
     pintarCategories(data)
     data.forEach(item => {
