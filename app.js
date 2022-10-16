@@ -7,7 +7,8 @@ const templateCarrito = document.getElementById('template-carrito').content
 const fragment = document.createDocumentFragment()
 let carrito = {}
 
-let url = "https://quiet-semolina-fcaeb4.netlify.app/";
+// let url = "https://quiet-semolina-fcaeb4.netlify.app/";
+let url = "/";
 document.getElementById('inicio').setAttribute('href', url);
 
 // Eventos
