@@ -7,7 +7,6 @@ const templateCarrito = document.getElementById('template-carrito').content
 const fragment = document.createDocumentFragment()
 let carrito = {}
 
-// let url = "https://quiet-semolina-fcaeb4.netlify.app/";
 let url = "/";
 document.getElementById('inicio').setAttribute('href', url);
 
@@ -26,27 +25,27 @@ items.addEventListener('click', e => { btnAumentarDisminuir(e) })
 
 // Traer productos
 const fetchDataProducts = async () => {
-    const res = await fetch(`/https://bsale-backend-laos.herokuapp.com/api/productos`);
+    const res = await fetch(`/api/productos`);
     const data = await res.json()
     pintarCards(data)
 }
 // Traer productos por nombre
 const fetchDataProductsByName = async (name) => {
-    const res = await fetch(`/https://bsale-backend-laos.herokuapp.com/api/productos?name=${name}`);
+    const res = await fetch(`/api/productos?name=${name}`);
     const data = await res.json()
     pintarCards(data)
 }
 
 // Traer productos por categoria
 const fetchDataProductsByCategory = async (category) => {
-    const res = await fetch(`/https://bsale-backend-laos.herokuapp.com/api/productos/${category}`);
+    const res = await fetch(`/api/productos/${category}`);
     const data = await res.json()
     pintarCards(data)
 }
 
 // Traer Id de catergorias por nombre
 const fetchCategoryIdByName = async (category) => {
-    const res = await fetch(`/https://bsale-backend-laos.herokuapp.com/api/categorias/${category}`);
+    const res = await fetch(`/api/categorias/${category}`);
     const data = await res.json()
     return data.id;
 }
@@ -54,7 +53,7 @@ const fetchCategoryIdByName = async (category) => {
 let arrayCategories = [];
 // Traer categorias
 const fetchDataCategories = async () => {
-    const res = await fetch(`/https://bsale-backend-laos.herokuapp.com/api/categorias`);
+    const res = await fetch(`/api/categorias`);
     const data = await res.json()
     pintarCategories(data)
     data.forEach(item => {
